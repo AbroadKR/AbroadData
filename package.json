@@ -1,0 +1,28 @@
+{
+	"name": "abroaddata",
+	"description": "Data to MongoDB",
+	"version": "1.0.0",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon app --delay 2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/AbroadKR/AbroadData.git"
+	},
+	"author": "Joo",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/AbroadKR/AbroadData/issues"
+	},
+	"homepage": "https://github.com/AbroadKR/AbroadData#readme",
+	"dependencies": {
+		"dotenv": "^10.0.0",
+		"mongodb": "^3.6.9"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.9"
+	}
+}
