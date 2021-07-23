@@ -10,6 +10,7 @@ const continentLists = document.querySelector('.continentLists');
 const countryInput = document.querySelector('.countryInput');
 const countryPopup = document.querySelector('.popup.country');
 const countryLists = document.querySelector('.countryLists');
+const searchForm = document.querySelector('#searchForm');
 
 const koUnivs = [];
 const continents = [];
@@ -193,12 +194,12 @@ continentLists.addEventListener('click', (e)=>{
     if (e.target.classList.contains('selected') == true){
         e.target.classList.remove('selected');
         selectedContinent.pop(e.target.textContent);
-        continentInput.innerHTML = selectedContinent.join(', ');
+        continentInput.value = selectedContinent.join(', ');
     } else {
         e.target.classList.add('selected');
         selectedContinent.push(e.target.textContent);
         console.log(selectedContinent);
-        continentInput.innerHTML = selectedContinent.join(', ');
+        continentInput.value = selectedContinent.join(', ');
     }
 });
 
@@ -206,11 +207,15 @@ countryLists.addEventListener('click', function test(e){
     if (e.target.classList.contains('selected') == true){
         e.target.classList.remove('selected');
         selectedCountry.pop(e.target.textContent);
-        countryInput.innerHTML = selectedCountry.join(', ');
+        countryInput.value = selectedCountry.join(', ');
     } else {
         e.target.classList.add('selected');
         selectedCountry.push(e.target.textContent);
         console.log(selectedCountry);
-        countryInput.innerHTML = selectedCountry.join(', ');
+        countryInput.value = selectedCountry.join(', ');
     }
 })
+
+function searchByOptions(){
+    console.log(searchForm.koUniv);
+}

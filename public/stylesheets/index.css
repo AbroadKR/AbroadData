@@ -118,6 +118,18 @@ button:hover {
     background-color: transparent;
 }
 
+.options.country input, .options.continent input {
+    outline: none;
+    border: none;
+    width: 90%;
+    padding: 0;
+    background-color: transparent;
+    font-size: 15px;
+    font-family: 'Nanum Gothic', sans-serif;
+    color: #a0a0a0;
+    cursor: pointer;
+}
+
 .options.koUniv input::placeholder{
     font-size: 15px;
     font-family: 'Nanum Gothic', sans-serif;

@@ -18,7 +18,7 @@
         </nav>
     </header>
     <main>
-        <form action="./result.html" method="POST">
+        <form id="searchForm" action="/results" method="GET">
             <div class="mainBox">
                 <div class="searchBar">
                     <div class="container">
@@ -36,7 +36,8 @@
                     <div tabindex="1" class="container continent">
                         <div class="options continent">
                             <div>대륙</div>
-                            <div class="continentInput">어느 대륙을 선호하시나요?</div>
+                            <input class="continentInput" type="text" name="continent" value="어느 대륙을 선호하시나요?" readonly>
+                            <!-- <div class="continentInput" name="continent">어느 대륙을 선호하시나요?</div> -->
                         </div>
                         <div class="popup continent">
                             <p><span style="color: #4DB7E6;">대륙</span>을 선택해주세요</p>
@@ -48,9 +49,10 @@
                     <div tabindex="1" class="container country">
                         <div class="options country">
                             <div>국가</div>
-                            <div class="countryInput">어느 국가를 선호하시나요?</div>
+                            <input class="countryInput" type="text" name="country" value="어느 국가를 선호하시나요?" readonly>
+                            <!-- <div class="countryInput" name="country">어느 국가를 선호하시나요?</div> -->
                         </div>
-                        <button type="submit">검 색</button>
+                        <button type="submit" onclick="searchByOptions()">검 색</button>
                         <div class="popup country">
                             <p><span style="color: #4DB7E6;">국가</span>를 선택해주세요</p>
                             <ul class="countryLists">
