@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/index.css">
+    <title>ABROAD</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="#">ABROAD</a>
+            <img src="/public/images/hamburger.png" alt="hamburger">
+        </nav>
+    </header>
+    <main>
+        <form id="searchForm" action="/results" method="GET">
+            <div class="mainBox">
+                <div class="searchBar">
+                    <div class="container">
+                        <div class="options koUniv">
+                            <div>재학 중인 대학교</div>
+                            <input type="text" name="koUniv" placeholder="현재 재학 중인 대학을 입력하세요" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="popup koUniv">
+                        <ul class="koUnivLists">
+                            <p>현재 재학중인 <span class="ignore" style="color: #4DB7E6;">대학</span>을 선택해주세요</p>
+                        </ul>
+                    </div>
+                    <span class="bar"></span>
+                    <div tabindex="1" class="container continent">
+                        <div class="options continent">
+                            <div>대륙</div>
+                            <input class="continentInput" type="text" name="continent" value="어느 대륙을 선호하시나요?" readonly>
+                            <!-- <div class="continentInput" name="continent">어느 대륙을 선호하시나요?</div> -->
+                        </div>
+                        <div class="popup continent">
+                            <p><span style="color: #4DB7E6;">대륙</span>을 선택해주세요</p>
+                            <ul class="continentLists">
+                            </ul>
+                        </div>
+                    </div>
+                    <span class="bar"></span>
+                    <div tabindex="1" class="container country">
+                        <div class="options country">
+                            <div>국가</div>
+                            <input class="countryInput" type="text" name="country" value="어느 국가를 선호하시나요?" readonly>
+                            <!-- <div class="countryInput" name="country">어느 국가를 선호하시나요?</div> -->
+                        </div>
+                        <button type="submit" onclick="searchByOptions()">검 색</button>
+                        <div class="popup country">
+                            <p><span style="color: #4DB7E6;">국가</span>를 선택해주세요</p>
+                            <ul class="countryLists">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mainImg">
+                    <h3>어브로드는</h3>
+                    <p>
+                        교환학생, 유학생들을 위한 정보 커뮤니티 입니다. </br>유학에 관한 정보들을 한 눈에 찾아보고 자유롭게 소통하세요.
+                    </p>
+                </div>
+            </div>
+        </form>
+    </main>
+    <footer></footer>
+</body>
+<script type="module" src="/public/javascripts/main.js"></script>
+
+</html>
