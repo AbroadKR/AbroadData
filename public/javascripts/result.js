@@ -1,7 +1,7 @@
 const table = document.querySelector('.table');
 const tHead = document.querySelector('thead');
 const tBody = document.querySelector('tbody');
-const caption = document.querySelector('caption');
+const caption = document.querySelector('.caption_koUniv');
 
 window.onload = getData()
 .then(displayTable);
@@ -12,10 +12,11 @@ async function getData(){
     const urlString = window.location.href;
     const url = new URL(urlString);
     const selectedOptions = {
-        koUniv : url.searchParams.get("koUniv"),
-        continent : url.searchParams.get("continent").split(', '),
-        country : url.searchParams.get("country").split(', '),
+        koUniv : url.searchParams.get("koUniv").trim(),
+        continent : url.searchParams.get("continent").trim().split(', '),
+        country : url.searchParams.get("country").trim().split(', '),
     }
+    console.log(selectedOptions.koUniv,selectedOptions.continent, selectedOptions.country);
     const conditions = {
         method : 'POST',
         headers : {
@@ -43,7 +44,6 @@ async function displayTable(){
         </tr>`)
     }
     const html = tableHTML.join('');
-    console.log(html);
     tBody.innerHTML = html;
-    caption.innerHTML = `${url.searchParams.get("koUniv")}<span>학교</span>`
+    caption.innerHTML = `${url.searchParams.get("koUniv").trim()}<span>학교</span>`
 };

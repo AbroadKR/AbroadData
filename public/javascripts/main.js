@@ -1,15 +1,17 @@
 const searchBar = document.querySelector('.searchBar');
 const options = document.querySelectorAll('.options');
 const triggers = document.querySelectorAll('.container');
-const koUnivInput = document.querySelector('.options > input');
+const koUnivInput = document.querySelector('.koUnivInput');
 const koUnivLists = document.querySelector('.koUnivLists');
 const koUnivPopup = document.querySelector('.popup.koUniv');
 const continentInput = document.querySelector('.continentInput');
 const continentPopup = document.querySelector('.popup.continent');
 const continentLists = document.querySelector('.continentLists');
+const continentLabel = document.querySelector('.label_continent');
 const countryInput = document.querySelector('.countryInput');
 const countryPopup = document.querySelector('.popup.country');
 const countryLists = document.querySelector('.countryLists');
+const countryLabel = document.querySelector('.label_country');
 const searchForm = document.querySelector('#searchForm');
 
 const koUnivs = [];
@@ -21,6 +23,7 @@ const selectedCountry = [];
 function pop(e){
     const optionsCoords = this.getBoundingClientRect();
     const barCoords = searchBar.getBoundingClientRect();
+    console.log(this);
     if (e.target.tagName == 'BUTTON'){
         return
     }
@@ -36,11 +39,11 @@ function pop(e){
             alert('재학중인 대학을 먼저 선택해주세요!')
             return 
         } else{
+            continentInput.value = "어느 대륙을 선호하시나요?";
+            continents.length = 0;
+            selectedContinent.length = 0;
             continentPopup.classList.add('dropdown');
             continentPopup.style.setProperty('transform', `translateX(-${optionsCoords.width/3}px)`);
-            continents.length = 0;
-            selectedContinent.length=0;
-            continentInput.innerHTML = "어느 대륙을 선호하시나요?";
             getContinents()
             .then(continentDisplay);
         };
@@ -50,11 +53,10 @@ function pop(e){
         } else {
             countries.length = 0;
             selectedCountry.length=0;
-            countryInput.innerHTML = "어느 국가를 선호하시나요?";
+            countryInput.value = "어느 국가를 선호하시나요?";
             getContriesByContinent()
             .then(countryDisplay);
             countryPopup.classList.add('dropdown');
-            countryPopup.style.setProperty('transform', `translateX(-${optionsCoords.width/3}px`);
         }
     };
 };
@@ -117,7 +119,7 @@ function findKoUnivs(wordToMatch, koUnivs){
 
 function koUnivMatches(e){
     if (this.value == ""){
-        const html = "<p> 현재 재학중인 <span style=\"color: #4DB7E6;\">대학</span>을 선택해주세요</p>";
+        const html = "<p> 현재 재학중인 <span class=\"hl\">대학</span>을 선택해주세요</p>";
         return koUnivLists.innerHTML = html;
         
     };
@@ -131,7 +133,7 @@ function koUnivMatches(e){
     }).join('');
     e.preventDefault();
     koUnivLists.innerHTML = `
-    <p>현재 재학중인 <span style="color: #4DB7E6;">대학</span>을 선택해주세요</p>
+    <p>현재 재학중인 <span class="hl">대학</span>을 선택해주세요</p>
     ${html}
     `;
 };
@@ -155,13 +157,13 @@ function countryDisplay(){
 };
 
 function unpop(e){
-    if (e.target.tagName == 'INPUT'){
+    if (this.childNodes[1].classList.contains('koUniv')){
         koUnivPopup.classList.remove('dropdown');
-    } else if (this.childNodes[1].classList.contains('continent')){
+    } else if (this.classList.contains('continent')){
         continentPopup.classList.remove('dropdown');
-    } else if (this.childNodes[1].classList.contains('country')){
+    } else if (this.classList.contains('country')){
         countryPopup.classList.remove('dropdown');
-    };;
+    };
 }
 
 function hover(e){
@@ -190,12 +192,12 @@ continentLists.addEventListener('click', (e)=>{
     if (e.target.classList.contains('selected') == true){
         e.target.classList.remove('selected');
         selectedContinent.pop(e.target.textContent);
-        continentInput.value = selectedContinent.join(', ');
+        continentInput.innerHTML = selectedContinent.join(', ');
     } else {
         e.target.classList.add('selected');
         selectedContinent.push(e.target.textContent);
         console.log(selectedContinent);
-        continentInput.value = selectedContinent.join(', ');
+        continentInput.innerHTML = selectedContinent.join(', ');
     }
 });
 
@@ -203,11 +205,17 @@ countryLists.addEventListener('click', function test(e){
     if (e.target.classList.contains('selected') == true){
         e.target.classList.remove('selected');
         selectedCountry.pop(e.target.textContent);
-        countryInput.value = selectedCountry.join(', ');
+        countryInput.innerHTML = selectedCountry.join(', ');
     } else {
         e.target.classList.add('selected');
         selectedCountry.push(e.target.textContent);
-        console.log(selectedCountry);
-        countryInput.value = selectedCountry.join(', ');
+        countryInput.innerHTML = selectedCountry.join(', ');
     }
 })
+
+function searchByOptions(){
+    const optKoUniv = koUnivInput.value;
+    const optContinent = continentInput.innerHTML;
+    const optCountry = countryInput.innerHTML;
+    window.location.href = `/results? + &koUniv= +${optKoUniv}+ &continent= +${optContinent}+ &country= +${optCountry}`;
+}
