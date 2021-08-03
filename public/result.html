@@ -6,30 +6,52 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ABROAD</title>
-  <link rel="stylesheet" href="/public/stylesheets/result.css">
+  <link rel="stylesheet" href="/public/stylesheets/layout/result.css">
+  <link rel="stylesheet" href="/public/stylesheets/layout/header.css">
+  <link rel="stylesheet" href="/public/stylesheets/globals.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 </head>
 
 <body>
-  <header>
-    <nav>
-      <a href="#">ABROAD</a>
-      <img src="/public/images/hamburger.png" alt="hamburger">
-    </nav>
+  <header class="header">
+    <div class="header_logo">
+      <a href="/"><img src="/public/images/abroad_logo.svg"><a>
+    </div>
+    <ul class="header_nav">
+      <li><a href="">커뮤니티</a></li>
+      <li><a href="">상세검색</a></li>
+      <li><a href="">도움문의</a></li>
+    </ul>
+    <ul class="header_signup">
+      <i class="far fa-user-circle"></i>
+      <button id="header_signup_login">로그인 |</button>
+      <button id="header_signup_regist">회원가입</button>
+    </ul>
   </header>
-  <table class="table">
-    <caption></caption>
-    <thead>
-      <tr>
-        <th>대륙</th>
-        <th>국가</th>
-        <th>대학명</th>
-        <th>선발인원</th>
-        <th>파견기간</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
+  <div class="header_line"></div>
+  <main>
+    <div class="main_caption">
+      <div class="caption_title">나의 학교</div>
+      <span class="caption_bar"></span>
+      <div class="caption_koUniv"></div>
+    </div>
+    <table class="main_table">
+      <thead class="main_thead">
+        <tr>
+          <th>대륙</th>
+          <th>국가</th>
+          <th>대학명</th>
+          <th>선발인원</th>
+          <th>파견기간</th>
+        </tr>
+      </thead>
+      <tbody class="main_tbody">
+      </tbody>
+    </table>
+  </main>
 </body>
 <script src="/public/javascripts/result.js"></script>
 
