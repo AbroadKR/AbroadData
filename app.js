@@ -62,8 +62,6 @@ app.post('/getCountries', (req, res)=>{
 
 app.post('/getCountriesByContinent', (req,res)=>{
     const selectedContinent = req.body;
-    console.log(selectedContinent['selConti']);
-    console.log(selectedContinent['koVal']);
     table.find({koUniv : selectedContinent['koVal'] ,continent : {$in:selectedContinent['selConti']}}, (err, tables)=>{
         if(err){
             res.end();

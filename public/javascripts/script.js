@@ -21,13 +21,11 @@ const sliderImage = document.querySelectorAll('.slide-in')
 const doubleQuot = document.querySelector('.section_3_dotdot');
 const lastInfo = document.querySelector('.section_3_info_strong');
 
-window.onload = quotSize();
-
-function quotSize(){
-  const infoCoords = lastInfo.getBoundingClientRect();
-  const infoWidth = infoCoords.width;
+document.addEventListener("DOMContentLoaded", ()=>{
+  // const infoCoords = lastInfo.getBoundingClientRect();
+  const infoWidth = lastInfo.offsetWidth;
   doubleQuot.style.setProperty('width', `${infoWidth * 1.14}px`);
-};
+});
 
 function debounce(func, wait = 5, immediate = true) {
   let timeout

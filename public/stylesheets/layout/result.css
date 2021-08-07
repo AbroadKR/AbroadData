@@ -3,7 +3,7 @@
     height: 1px;
     background-color: #E5E5E5;
 }
-/* 테이블 상단 캡션 */
+/* ---------- 테이블 상단 캡션 ---------- */
 .main_caption {
     display: flex;
     align-items: center;
@@ -41,27 +41,23 @@ main {
     margin-top: 5%;
     border-collapse: collapse;
 }
-
-tr:nth-child(even) td{
-    background-color: #FBFBFB;
-}
 .main_thead {
     background-color: #F3F3F3;
     height: 3.75rem;
 }
-th {
+.main_thead th {
     font-size: 1rem;
     text-align: left;
-    border-bottom: 1px solid ghostwhite;
+    border-bottom: 1px solid #D1D1D1;
     color: #444444;
     padding-left: 1.5em;
 }
 
-th:nth-child(3){
+.main_thead th:nth-child(3){
     width: calc(300px * 1vw);
 }
 
-th:nth-child(1), th:nth-child(2), th:nth-child(4), th:nth-child(5){
+.main_thead th:nth-child(1), .main_thead th:nth-child(2), .main_thead th:nth-child(4), .main_thead th:nth-child(5){
     width: 10rem;
 }
 
@@ -69,12 +65,148 @@ th:nth-child(1), th:nth-child(2), th:nth-child(4), th:nth-child(5){
     font-weight: 700;
 }
 
-.main_tbody td {
-    border-bottom: 2px solid #D1D1D1;
+.main_tbody tr {
+    border-bottom: 1px solid #D1D1D1;
     height: 3.75rem;
-    padding-left: 1.5em;
+    vertical-align: middle;
+}
+.main_tbody tr td {
+    padding: 1.5em;
+    cursor: pointer;
+}
+.main_tbody tr.open td{
+    padding-bottom: 70.6vh;
+}
+.main_tbody td:nth-child(3){
+    color:#66A6FF;
+}
+.main_tbody tr:hover td{
+    background-color: #dfeafc;
+}
+.main_tbody tr:nth-child(even):hover td{
+    background-color: #dfeafc;
+}
+.main_tbody tr:nth-child(even) td{
+    background-color: #FBFBFB;
 }
 
-td:nth-child(3){
-    color:#66A6FF;
+/* ---------- 상세보기 ----------  */
+
+.detail_mainBox{
+    display: none;
+    position: absolute;
+    max-width: 75vw;
+    /* display: flex; */
+    height: 68vh;
+    border: 1px solid #D1D1D1;
+    border-left: 3px solid #66A6FF;
+    padding: 2em;
+    background-color: #FFFFFF;
+}
+.detail_mainBox.open {
+    display: flex;
+}
+.detail_leftBox {
+    display: flex;
+    width: 33%;
+    flex-direction: column;
+    /* border: 1px solid green; */
+}
+.detail_leftBox img {
+    max-height: 250px;
+    border-radius: 20px;
+}
+.evaluation_table {
+    padding: 0.3em;
+    border: 1px solid #D1D1D1;
+    border-radius: 15px;
+    border-spacing: 0.8rem;
+    margin: 2.5% 0;
+}
+.evaluation_table th {
+    text-align: left;
+    width: 40%;
+}
+.requirements_table{
+    border-collapse: collapse;
+    border-radius: 15px;
+    border-style: hidden;
+    box-shadow: 0 0 0 1px #D1D1D1;
+}
+.requirements_table th {
+    border: 1px solid #D1D1D1;
+    height: 2rem;
+}
+.requirements_table td {
+    border: 1px solid #D1D1D1;
+    height: 2.5rem;
+    text-align: center
+}
+
+.detail_rightBox {
+    display: flex;
+    width: 67%;
+    flex-direction: column;
+    padding: 0.5em 3em;
+}
+.rightBox_caption {
+    font-size: 1.5rem;
+    margin-bottom: 2%;
+}
+.rightBox_caption i {
+    color: #66A6FF;
+}
+.rightBox_caption span {
+    font-weight: 700;
+    margin-left: 1rem;
+}
+.rightBox_comments{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #D1D1D1;
+    border-radius: 15px;
+    height: 65%;
+    padding: 0 1em;
+    margin-bottom: 2%;
+}
+.rightBox_comments li {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    border-bottom: 1px solid #D1D1D1;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.rightBox_comments li:last-child {
+    border: none;
+}
+.comments_info {
+    min-width: max-content;
+    margin-right: 4%;
+}
+.comments_stars i {
+    color: #66A6FF;
+}
+.rightBox_buttons {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.ogInfo_button {
+    display: inline-block;
+    padding: 0.7em;
+    border-radius: 15px;
+    border: 1px solid #66A6FF;
+    color: #66A6FF;
+}
+.more_detail_button {
+    display: inline-block;
+    margin-left: 3%;
+    padding: 0.7em;
+    border: none;
+    background-color: #66A6FF;
+    color: #FFFFFF;
+    display: inline-block;
+    border-radius: 15px;
 }
