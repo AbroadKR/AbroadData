@@ -36,7 +36,12 @@ function pop(e){
         };
     } else if (this.classList.contains('continent')){
         if (koUnivInput.value == ""){
-            alert('재학중인 대학을 먼저 선택해주세요!')
+            this.classList.add('warn');
+            continentInput.innerHTML = "대학을 입력하세요"
+            setTimeout(()=>{
+                continentInput.innerHTML = "어느 대륙을 선호하시나요?"
+                this.classList.remove('warn');
+            }, 1000)
             return 
         } else{
             continentInput.value = "어느 대륙을 선호하시나요?";
@@ -49,7 +54,13 @@ function pop(e){
         };
     } else if (this.classList.contains('country')){
         if (koUnivInput.value == ""){
-            alert('재학중인 대학을 먼저 선택해주세요!')
+            this.classList.add('warn');
+            countryInput.innerHTML = "대학을 입력하세요"
+            setTimeout(()=>{
+                this.classList.remove('warn');
+                countryInput.innerHTML = "어느 국가를 선호하시나요?"
+            }, 1000)
+            return 
         } else {
             countries.length = 0;
             selectedCountry.length=0;

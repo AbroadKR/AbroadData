@@ -2,7 +2,7 @@
 
 .footer {
   width: 100%;
-  height: calc(185px + 5vh);
+  height: calc(195px + 5vh);
   /* max-height: 25vh; */
   padding: 0.5em;
   background: #66A6FF;
@@ -22,10 +22,8 @@
 }
 
 .footer_logo {
-  display: flex;
-  /* flex-direction: start; */
-  margin: 1.5em 0;
-  margin-top: 0.5em;
+  width: 20rem;
+  transform: translateX(-8%);
 }
 
 .footer_left_span li {

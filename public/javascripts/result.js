@@ -1,7 +1,11 @@
-const table = document.querySelector('.table');
-const tHead = document.querySelector('thead');
-const tBody = document.querySelector('tbody');
-const caption = document.querySelector('.caption_koUniv');
+const nav = document.querySelector('.header');
+const mainTable = document.querySelector('main_table');
+const mainThead = document.querySelector('.main_thead');
+const mainTbody = document.querySelector('.main_tbody');
+const mainCaption = document.querySelector('.caption_koUniv');
+const tbodyTr = document.querySelectorAll('.main_tbody > tr');
+const detailBox = document.querySelector('.detail_mainBox');
+let lastClicked;
 
 window.onload = getData()
 .then(displayTable);
@@ -44,6 +48,25 @@ async function displayTable(){
         </tr>`)
     }
     const html = tableHTML.join('');
-    tBody.innerHTML = html;
-    caption.innerHTML = `${url.searchParams.get("koUniv").trim()}<span>학교</span>`
+    mainTbody.innerHTML = html;
+    mainCaption.innerHTML = `${url.searchParams.get("koUniv").trim()}<span>학교</span>`
 };
+function accordion(){
+    if (this.classList.contains('open') == true){
+        this.classList.remove('open');
+        detailBox.classList.remove('open');
+    } else {
+        for(var i=0; i<tbodyTr.length;i++){
+            if (tbodyTr[i].classList.contains('open')){
+                tbodyTr[i].classList.remove('open');
+                detailBox.classList.remove('open');
+            }
+        }
+        const trCoords = this.getBoundingClientRect();
+        const trBottom = trCoords.bottom;
+        this.classList.add('open');
+        detailBox.classList.add('open');
+        detailBox.style.setProperty('top', `${trBottom}px`)
+    }
+};
+tbodyTr.forEach(tr => tr.addEventListener('click', accordion));
