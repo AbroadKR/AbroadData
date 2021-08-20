@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link, HashRouter } from "react-router-dom";
 
@@ -29,6 +29,9 @@ const NavMenu = styled.li`
     text-align: center;
     &.dropdown > ul{
         max-height : 20rem;
+        & > li {
+            opacity : 100%;
+        }
     }
 `
 const NavLink = styled(Link)`
@@ -47,16 +50,18 @@ const SubMenu = styled.ul`
     width: 10rem;
     color : #444444;
     font-weight : 700;
-    overflow: hidden;
+    /* overflow: hidden; */
     top: 85%;
     border: none;
     border-radius : 25px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    transition: all .3s;
+    transition: max-height .4s;
     background-color : #ffffff;
     z-index : 15;
     & > li {
         display : flex;
+        position : relative;
+        opacity : 0;
         align-items : center;
         justify-content : flex-start;
         transition : all .2s;
@@ -79,6 +84,18 @@ const SubMenu = styled.ul`
             color : #66A6FF;
         }
     }
+    & > ul {
+            position : absolute;
+            left : 100%;
+            padding : 1.5em 0;
+            width : 10rem;
+            /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+            background-color : #ffffff;
+            border-radius : 25px;
+            & > li {
+                height :25px
+            }
+        }
 `
 const SignBox = styled.ul`
     position: relative;
@@ -113,16 +130,20 @@ const SignBox = styled.ul`
         top: 5.5rem;
         overflow: hidden;
         z-index: 15;
-        transition : all .3s;
+        transition : max-height .4s;
         cursor: pointer;
     }
     & li.dropdown ul {
         max-height : 15rem;
+        & > li {
+            opacity : 100%;
+        }
     }
     & > li ul > li {
         display : flex;
         align-items : center;
         justify-content : flex-start;
+        opacity : 0;
         padding-left : 1.5em;
         font-weight: 700;
         width: 100%;
@@ -139,13 +160,21 @@ const SignBox = styled.ul`
 `
 
 function Header() {
+    const [activeMenu, setActiveMenu] = useState("none");
+    const [menuHeight, setMenuHeight] = useState(null);
 
     const dropdown = (e) => {
         e.currentTarget.classList.add("dropdown");
     }
     const closeDropdown = (e) => {
+        setActiveMenu("none")
         e.currentTarget.classList.remove("dropdown");
     }
+    const calcHeight = (el)=>{
+        const height = el.offsetHeight;
+        return setMenuHeight(height);
+    }
+    console.log(activeMenu);
 
     return (
         <HashRouter>
@@ -160,8 +189,25 @@ function Header() {
                         <NavLink to="#">커뮤니티</NavLink>
                         <SubMenu>
                             <li>자유 게시판</li>
-                            <li>대륙</li>
-                            <li>여행</li>
+                            <li onClick={()=>setActiveMenu("continent")}>대륙</li>
+                            <li onClick={()=>setActiveMenu("travel")}>여행</li>
+                            {activeMenu==="continent" && 
+                                <ul className="secondSub">
+                                    <li>남미</li>
+                                    <li>북미</li>
+                                    <li>아시아</li>
+                                    <li>아프리카</li>
+                                    <li>오세아니아</li>
+                                    <li>유럽</li>
+                                    <li>중동</li>
+                                </ul>
+                            }
+                            {activeMenu==="travel" && 
+                                <ul className="secondSub">
+                                    <li>정보/일정 공유</li>
+                                    <li>동행 찾기</li>
+                                </ul>
+                            }
                         </SubMenu>
                     </NavMenu>
                     <NavMenu >

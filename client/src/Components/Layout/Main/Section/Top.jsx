@@ -1,6 +1,7 @@
-import React ,{useState, useRef} from "react";
+import React ,{useState, useEffect} from "react";
 import styled from "styled-components";
 import { FiSearch } from "react-icons/fi";
+import axios from "axios";
 
 const Section1 = styled.div`
     width : 75vw;
@@ -205,7 +206,10 @@ const SearchButton = styled.button`
 
 function Top(){
     const [clickedOptions, setClickedOptions] = useState();
+    const [optionData, setOptionData] = useState([]);
     const togglePopup = (name) =>{
+        axios.get('/api/getKoUnivs')
+        .then((res)=>console.log(res.data))
         return (setClickedOptions(name))
     };
 

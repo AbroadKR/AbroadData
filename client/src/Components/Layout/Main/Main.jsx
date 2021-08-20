@@ -1,9 +1,9 @@
 import React from "react";
-import {HashRouter, Route} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 import styled from "styled-components";
 import Top from "./Section/Top";
-import Middle from "./Section/Middle";
-import Bottom from "./Section/Bottom";
+// import Middle from "./Section/Middle";
+// import Bottom from "./Section/Bottom";
 
 const Wrapper = styled.div`
     width : 75vw;
